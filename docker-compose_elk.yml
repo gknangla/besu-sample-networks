@@ -11,6 +11,7 @@ services:
     environment:
       - BESU_PUBLIC_KEY_DIRECTORY=${BESU_PUBLIC_KEY_DIRECTORY}
       - LOG4J_CONFIGURATION_FILE=/config/log-config.xml
+      - OTEL_RESOURCE_ATTRIBUTES="service.name=besu-$VERSION"
     entrypoint: /opt/besu/bootnode_start.sh --network=dev --config-file=/config/config.toml --min-gas-price=0
     volumes:
       - public-keys:${BESU_PUBLIC_KEY_DIRECTORY}
@@ -26,6 +27,7 @@ services:
     environment:
       - BESU_PUBLIC_KEY_DIRECTORY=${BESU_PUBLIC_KEY_DIRECTORY}
       - LOG4J_CONFIGURATION_FILE=/config/log-config.xml
+      - OTEL_RESOURCE_ATTRIBUTES="service.name=besu-miner-$VERSION"
     command: [
       "--config-file=/config/config.toml",
       "--network=dev",
@@ -60,6 +62,7 @@ services:
     environment:
       - BESU_PUBLIC_KEY_DIRECTORY=${BESU_PUBLIC_KEY_DIRECTORY}
       - LOG4J_CONFIGURATION_FILE=/config/log-config.xml
+      - OTEL_RESOURCE_ATTRIBUTES="service.name=besu-rpc-$VERSION"
     command: [
       "--config-file=/config/config.toml",
       "--network=dev"]
