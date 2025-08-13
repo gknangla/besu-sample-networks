@@ -1,7 +1,7 @@
 version: "3"
 services:
   otel-collector:
-    image: otel/opentelemetry-collector-contrib:0.11.0
+    image: otel/opentelemetry-collector-contrib:0.132.2
     command: ["--config=/etc/otel-collector-config.yml"]
     volumes:
       - ./otel-collector-config.yml:/etc/otel-collector-config.yml
